@@ -1,15 +1,6 @@
 # Webapp-nodejs
  Graduation work
 
-
-
-
-
-
-
-
-
-
 ## Core + lib + etc ⚙
 ```
 1. Node - v16.15.9
