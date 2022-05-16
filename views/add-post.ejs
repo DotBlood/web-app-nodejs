@@ -28,11 +28,11 @@
                     <section class="forma-add-post pb-5 mt-3">
                         <form action="/add-post" method="post" id="post-form" class="p-3">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" name="title" placeholder="Лучшее лечение только у нас">
+                                <input type="text" class="form-control" name="title" placeholder="Лучшее лечение только у нас" required>
                                 <label for="text">Заголовок поста</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input class="form-control" type="text" name="author" placeholder="Александр Сергеевич Пушкин">
+                                <input class="form-control" type="text" name="author" placeholder="Александр Сергеевич Пушкин" required>
                                 <label for="text">Автор</label>
                             </div>
 
@@ -42,7 +42,7 @@
                             </div>
 
                             <div class="form-floating">
-                                <textarea class="form-control" placeholder="Содержание поста" name="description" style="height: 100px" maxlength="1500"></textarea>
+                                <textarea class="form-control" placeholder="Содержание поста" name="description" style="height: 100px" maxlength="1500" required></textarea>
                                 <label for="text">Содержание поста</label>
                             </div>
                             <div class="my-btn mt-5">
@@ -54,6 +54,8 @@
             </div>
         </div>
 
+
+        <script crc="js/check_input.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
     </body>
