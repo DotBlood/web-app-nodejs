@@ -14,12 +14,12 @@ const Port = 3000
 
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
 
+app.use(express.urlencoded({ extended: false }));
+
 // start server
 app.listen(Port, (error) => {
     error ? console.log(error) : console.log(`listening port ${Port}`);
 });
-
-app.use(express.urlencoded({ extended: false }));
 
 // include views
 const createPath = (page) => path.resolve(__dirname, 'views', `${page}.ejs`);
@@ -48,6 +48,19 @@ app.get('/services', (req, res) => {
     res.render(createPath('services'), {title});
 })
 
+app.post('/add-post', (req, res) => {
+    const { title, author, description, img } = req.body;
+    const post = {
+      id: new Date(),
+      date: (new Date()).toLocaleDateString(),
+      img,
+      title,
+      author,
+      description,
+    };
+    res.render(createPath('post'), { post, title });
+  });
+
 app.get('/add-post', (req, res) => {
     const title = 'Добавить пост' ;
     res.render(createPath('add-post'), {title});
@@ -57,7 +70,7 @@ app.get('/posts', (req, res) => {
     const title = 'Новости';
     const posts = [{
         id: '1',
-        img: 'https://st.depositphotos.com/2065849/2868/i/600/depositphotos_28686673-stock-photo-in-a-modern-clinic-abstract.jpg',
+        img: 'https://dummyimage.com/750x400/fff/000.png',
         title: 'Заголовок',
         author: 'Анатолий Ляхов',
         description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente quidem provident, dolores, vero laboriosam nemo mollitia impedit unde fugit sint eveniet, minima odio ipsum sed recusandae aut iste aspernatur dolorem.',

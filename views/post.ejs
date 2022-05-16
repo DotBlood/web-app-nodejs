@@ -29,17 +29,17 @@
                             
                                 <div class="post-title border-bottom mb-3">
                                     <div class="mt-2">
-                                        <h5 class="data pb-3">Дата дабовление: 16.05.22 </h5>
+                                        <h5 class="data pb-3">Дата дабовление: <%= post.date %> </h5>
                                     </div>
                                 </div>
                                 
                                 <div class="post-img">
-                                    <img class="img-fluid img-thumbnail rounded mx-auto d-block" src="<%- post.img %>" alt="">
+                                    <img class="img-fluid img-thumbnail rounded mx-auto d-block" src="<%- post.img || 'https://dummyimage.com/750x400/ababad/000.png' %> " alt="">
                                 </div>
                                 
                                 <div class="post-ofform p-3 mt-3 border-top">
                                 <div class="post-description border-bottom mb-2">
-                                    <p class="description"><b>Описание:</b><br><%- post.description %> s</p>
+                                    <p class="description"><b>Описание:</b><br><%- post.description %></p>
                                 </div>
 
                                 <div class="post-author">
@@ -57,29 +57,22 @@
                             </div> 
 
                             <div class="comment-add mt-5">
-                            
-                                
-
-                                <form action="comment-add">
-
+                                <form action="/post">
                                     <div class="mb-2">
                                         <label for="exampleFormControlInput1" class="form-label">Ваше имя, или псевдоним.</label>
-                                        <input type="username" class="form-control" id="add-username" placeholder="Александр Сергеевич Пушкин">
+                                        <input type="username" class="form-control" id="add-username" name="username" placeholder="Александр Сергеевич Пушкин">
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="exampleFormControlTextarea1" class="form-label">Ваш комментарий</label>
-                                        <textarea class="form-control" id="add-comment" rows="3"></textarea>
+                                        <textarea class="form-control" id="add-comment" name="text" rows="3"></textarea>
                                       </div>
                                     <div class="mb-3">
                                         <button type="submit" class="btn btn-outline-primary">Оставить свой отзыв.</button>
                                     </div>
                                 </form>    
-                            
                             </div>
                         
-
-
 
                             <div class="post-comment p-3 mt-5">
 
@@ -121,15 +114,10 @@
                                     <p class="data border-top "><b>Дата:</b> 16.05.2022</p>
                                 </section>
 
-
-
                             </div>
-                        
-                        
-
-                            
-
+                                                
                             <%- include('./partials/footer.ejs') %>
+                            
                         </div>
                     </div>
                 </main>
