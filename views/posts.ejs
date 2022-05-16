@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo.com | Новости</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/banner.css">
+    <link rel="stylesheet" href="css/posts.css">
+</head>
+
+<body>
+
+    <%- include('./partials/nav/navbar-posts.ejs') %>
+        <%- include('./partials/banner.ejs') %>
+
+
+            <div class="bg">
+                <div class="container">
+                    <div class="bg-inner">
+
+                        <section class="type-news mb-5">
+                            <div class="type-news__inner">
+                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                                    <label class="btn btn-outline-primary" for="btnradio1">Новое</label>
+
+                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="btnradio2">Главное</label>
+
+                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="btnradio3">Разное</label>
+                                </div>
+                            </div>
+                        </section>
+
+
+
+                        <%- include('./partials/posts-tmp.ejs') %>
+
+
+                            <section class="clear-block"> </section>
+
+
+
+                            <div class="post__chapter mb-3 border-top pt-3">
+                                <div class="container">
+                                    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                                        <div class="chapter-btn btn-group d-block m-auto " role="group" aria-label="chapter">
+                                            <button type="button" class="btn btn-primary" id="1">1</button>
+                                            <button type="button" class="btn btn-primary" id="2">2</button>
+                                            <button type="button" class="btn btn-primary" id="3">3</button>
+                                            <button type="button" class="btn btn-primary" id="4">4</button>
+                                            <button type="button" class="btn btn-primary" id="5">5</button>
+                                            <button type="button" class="btn btn-primary" id="more">...</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <%- include('./partials/footer.ejs') %>
+
+
+                    </div>
+                </div>
+            </div>
+
+            
+
+
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+
+</html>

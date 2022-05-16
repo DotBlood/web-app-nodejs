@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мед сайт.</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/banner.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+
+    <%- include('./partials/nav/navbar-index.ejs') %>
+
+
+
+        <%- include('./partials/banner.ejs') %>
+
+
+            <div class="bg">
+                <div class="container">
+                    <div class="bg-inner">
+                        <section class="contacts">
+                            <div class="container">
+                                <h3 class="titlesect p-5">Государственное учреждение здравоохранения города Москвы "Детская больница им. В.П. Плюшево" Департамента здравоохранения города Москвы</h3>
+                                <div class="row mt-5">
+                                    <div class="col">
+                                        <h5>Адрес:</h5>
+                                        <p>Больница Плюшево д. 10 с. 1</p>
+                                    </div>
+                                    <div class="col">
+                                        <h5>Номер телефона:</h5>
+                                        <p>+7 (999) 999-99-99</p>
+                                    </div>
+                                    <div class="col">
+                                        <h5>Режим работы:</h5>
+                                        <p>Пн-пт: 9:00-19:00 <br> Сб-вс: Не работает!</p>
+                                    </div>
+                                </div>
+                                <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Afc3c0a825e8938ffb1f0e9fff694a06c8594bbb281ed90885d9b4f3d0a558437&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+                            </div>
+
+
+                        </section>
+                        <section class="about-me-slim mt-5">
+                            <div class="container">
+                                <h2 class="titlesect p-5">Почему именно мы?</h2>
+                                <p class="pt-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum corporis officiis magnam temporibus consectetur eos ab sint error autem voluptas fugit voluptatibus consequatur illo unde voluptatem assumenda officia maiores
+                                    similique voluptate hic, dignissimos sunt asperiores. Voluptatibus ut doloremque quibusdam sint molestiae quae voluptatum nemo eos eaque deleniti repellendus, consectetur suscipit inventore rerum eius enim dolorum consequatur
+                                    nam. Itaque voluptates odio deserunt illo dolorem necessitatibus provident quis earum magnam quia! Sapiente dolorem, nihil harum ullam suscipit ipsam! Delectus dolor, necessitatibus consequuntur architecto repudiandae
+                                    ut temporibus cupiditate iusto. Veritatis vitae odio aliquid quibusdam ut cumque architecto, quo accusantium ipsa, excepturi voluptates itaque! </p>
+                            </div>
+                        </section>
+
+                        <div class="slider pt-5 pb-5">
+                            <div class="container">
+                                <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                                    <div class="carousel-indicators">
+                                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                    </div>
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active" data-bs-interval="10000">
+                                            <img src="https://st2.depositphotos.com/3482323/10558/i/600/depositphotos_105585518-stock-photo-3d-illustration-of-family-to.jpg" class="d-block w-100" alt="...">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>First slide label</h5>
+                                                <p>Some representative placeholder content for the first slide.</p>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item" data-bs-interval="2000">
+                                            <img src="https://st2.depositphotos.com/3482323/10470/i/600/depositphotos_104707570-stock-photo-3d-illustration-of-elderly-womanl.jpg" class="d-block w-100" alt="...">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>Second slide label</h5>
+                                                <p>Some representative placeholder content for the second slide.</p>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="https://static5.depositphotos.com/1037987/477/i/600/depositphotos_4779315-stock-photo-two-orderlies-pushing-a-woman.jpg" class="d-block w-100" alt="...">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>Third slide label</h5>
+                                                <p>Some representative placeholder content for the third slide.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <section class="rabotniki mt-5">
+                            <div class="container">
+                                <h3 class="titlesect p-5">Наш состав:</h3>
+                                <div class="row mt-5">
+                                    <div class="col">
+                                        <h5>Человек</h5>
+                                        <p>Доктор такой то</p>
+                                    </div>
+                                    <div class="col">
+                                        <h5>Человек</h5>
+                                        <p>Доктор такой то</p>
+                                    </div>
+                                    <div class="col">
+                                        <h5>Человек</h5>
+                                        <p>Доктор такой то</p>
+                                    </div>
+                                    <div class="col">
+                                        <h5>Человек</h5>
+                                        <p>Доктор такой то</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <div class="clear-block"></div>
+
+
+                    </div>
+                </div>
+
+                <%- include('./partials/footer.ejs') %>
+
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+
+</html>

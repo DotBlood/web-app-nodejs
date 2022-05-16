@@ -1,0 +1,30 @@
+body {
+    background-color: #3f51b5;
+}
+
+.bg-inner {
+    background-color: #ffffff;
+    border-radius: 0 5% 5%;
+}
+
+.forma-qui {
+    padding-left: 5px;
+}
+
+.title-qui {
+    font-size: 24px;
+    color: crimson;
+    text-align: center;
+}
+
+.suptitle-qui {
+    font-size: 15px;
+    color: rgb(0, 0, 0);
+    font-weight: 300;
+    text-align: center;
+}
+
+.my-btn {
+    margin: 0 auto;
+    text-align: center;
+}

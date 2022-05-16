@@ -1,0 +1,65 @@
+@import url('media.css') all;
+
+body {
+    background-color: #3f51b5;
+}
+
+.navbar {
+    box-shadow: 0px 5px 30px rgb(53, 53, 53);
+}
+
+.bg-inner {
+    background-color: #fff;
+    border-radius: 5rem;
+}
+
+
+/*Пост*/
+
+.post-img{
+    border-radius: 3rem;
+}
+
+.post-title{
+    text-align: center;
+}
+
+.post-description, .post-author{
+    font-weight: 400;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+/*оценка под постом*/
+
+
+
+
+/*Добваить комментарий*/
+
+
+
+
+/*комментарий*/
+
+.comment-show{
+    width: auto;
+    border-radius: 2rem ;
+}
+
+.comment-show>p{
+    font-weight: 300;
+}
+
+
+
+
+
+/*Пустой блок*/
+
+.clear-block {
+    width: auto;
+    height: 50vh;
+}

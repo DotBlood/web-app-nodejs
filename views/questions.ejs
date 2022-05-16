@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оставить отзыв</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/banner.css">
+    <link rel="stylesheet" href="css/qui.css">
+</head>
+
+<body>
+
+    <%- include('./partials/nav/navbar-que.ejs') %>
+
+
+
+        <div class="bg">
+            <div class="container">
+                <div class="bg-inner">
+
+
+                    <%- include('./partials/banner.ejs') %>
+
+
+                        <section class="forma-qui pb-5 mt-3">
+                            <div class="row">
+
+                                <div class="col">
+                                    <form action="">
+                                        <div class="form-floating mb-3">
+                                            <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                                            <label for="email">Email адрес</label>
+                                        </div>
+
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" type="text" id="username" placeholder="Александр Сергеевич Пушкин">
+                                            <label for="username">Ф.И.О.</label>
+                                        </div>
+
+                                        <div class="form-floating">
+                                            <textarea class="form-control" placeholder="Leave a comment here" id="comment" style="height: 100px" maxlength="1500"></textarea>
+                                            <label for="comment">Комментарий</label>
+                                        </div>
+                                        <div class="my-btn mt-5">
+                                            <button type="submit" class="btn btn-success">Отправить</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                
+
+                                <div class="col">
+                                    <div class="description-block">
+                                        <p class="title-qui">Форма заполения вопроса.</p>
+                                        <p class="suptitle-qui">Для того чтобы задать свой вопрос, заполните все формы, после чего нажмите на кнопку <b>"Отправить"</b><br>
+                                        </p>
+                                        <p class="fw-normal">
+                                            • Укажите свой Email чтобы мы могли вам отетить <br> • Укажите свое ФИО чтобы мы могли как-то к вам обращатся <br> • Опишите свой вопрос чтобы мы могли наиболее точно на него ответить <br>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    </body>
+
+</html>

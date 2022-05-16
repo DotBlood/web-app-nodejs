@@ -1,0 +1,33 @@
+<% if (posts.length) { %>
+    <% posts.forEach(({ img, id, title, author, description }) => { %>
+<section class="block__post border-bottom pb-2">
+    <div class="block__post__inner">
+        <div class="row">
+            <div class="col">
+                <img src="<%= img %>" alt="" class="img-to-post rounded float-start">
+            </div>
+            <div class="col">
+                <div class="block__post-text">
+                    <h4 class="post__title border-bottom">
+                        <a class="link-to-topick" href="/posts/<%= id %>">
+                            <%= title %>
+                        </a>
+                    </h4>
+                    <p class="post__description">Автор: <%= author %></p>
+                    <br>
+                    <h5 class="post__description-title">Описание:</h5>
+                    <div class="block__post-text-des">
+                        <p class="post__description ">
+                            <%= description %>
+                        </p>
+                    </div>
+                </div>
+                <div class="btns-to-topick border-top pt-2">
+                    <a href="/posts/<%= id %>" class="btn btn-outline-primary">Перейти</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <% }) %>
+<% } %>
