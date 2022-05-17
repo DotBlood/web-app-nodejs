@@ -1,5 +1,4 @@
 var empties = $("form").find('input:text').filter(function() { 
-    // добавьте здесь дополнительные проверки на целочисленность и т.п.
     return $(this).val() == ""; 
   });
   

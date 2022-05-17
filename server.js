@@ -1,24 +1,47 @@
 // Import
+const mongoose = require('mongoose')
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
-const { title } = require('process');
-const app = express()
+const Post = require('./app/models/post');
+
+
+
+
+
+
 
 //template
+const app = express();
 app.set('view engine', 'ejs')
 
 // Const
+const Hostname = '127.0.0.1'
 const Port = 3000
 
 
+
+
+// db
+const db = 'mongodb://root-admin:no8sU6caURKi@localhost:27017/?authMechanism=DEFAULT&authSource=medweb-node';
+mongoose
+    .connect(db, {useNewUrlParser: true, useUnifiedTopology: true} )
+    .then((res) => console.log('Connect to MongoDB'))
+    .catch((error) => console.log(error));
+
+
+
+
+//lib
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
 
 app.use(express.urlencoded({ extended: false }));
 
+
+
 // start server
-app.listen(Port, (error) => {
-    error ? console.log(error) : console.log(`listening port ${Port}`);
+app.listen(Port, Hostname, (error) => {
+    error ? console.log(error) : console.log(`listening port: 127.0.0.1:${Port}`);
 });
 
 // include views
@@ -50,43 +73,43 @@ app.get('/services', (req, res) => {
 
 app.post('/add-post', (req, res) => {
     const { title, author, description, img } = req.body;
-    const post = {
-      id: new Date(),
-      date: (new Date()).toLocaleDateString(),
-      img,
-      title,
-      author,
-      description,
-    };
-    res.render(createPath('post'), { post, title });
+    const post = new Post({title, author, description, img})
+    post
+        .save()
+        .then((result) => res.redirect('posts'))
+        .catch((error) => {
+            console.log(error);
+            res.render(createPath('error'), {title: 'error'})
+        })
   });
 
 app.get('/add-post', (req, res) => {
     const title = 'Добавить пост' ;
     res.render(createPath('add-post'), {title});
-})
+});
 
 app.get('/posts', (req, res) => {
     const title = 'Новости';
-    const posts = [{
-        id: '1',
-        img: 'https://dummyimage.com/750x400/fff/000.png',
-        title: 'Заголовок',
-        author: 'Анатолий Ляхов',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente quidem provident, dolores, vero laboriosam nemo mollitia impedit unde fugit sint eveniet, minima odio ipsum sed recusandae aut iste aspernatur dolorem.',
-    }];
-    res.render(createPath('posts'), { posts, title });
-})
+    Post
+        .find()
+        .sort( {createdAt: -1})
+        .then((posts) => res.render(createPath('posts'), { posts, title }))
+        .catch((error) => {
+            console.log(error);
+            res.render(createPath('error'), {title: 'error'})
+        }) 
+});
 
 app.get('/posts/:id', (req, res) => {
-    const post = {
-        id: '1',
-        img: 'https://st.depositphotos.com/2065849/2868/i/600/depositphotos_28686673-stock-photo-in-a-modern-clinic-abstract.jpg',
-        title: 'Заголовок.',
-        author: 'Анатолий Ляхов',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente quidem provident, dolores, vero laboriosam nemo mollitia impedit unde fugit sint eveniet, minima odio ipsum sed recusandae aut iste aspernatur dolorem.',
-    };
-    res.render(createPath('post'), { post });
+    Post
+    .findById(req.params.id)
+    .then((post) => res.render(createPath('post'), { post }))
+    .catch((error) => {
+        console.log(error);
+        res.render(createPath('errors'), {title: 'Error'})
+    }) 
+
+
 })
 
 app.get('/questions', (req, res) => {

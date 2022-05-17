@@ -29,7 +29,7 @@
                             
                                 <div class="post-title border-bottom mb-3">
                                     <div class="mt-2">
-                                        <h5 class="data pb-3">Дата дабовление: <%= post.date %> </h5>
+                                        <h5 class="data pb-3">Дата дабовление: <%- post.createdAt.toLocaleDateString() %> </h5>
                                     </div>
                                 </div>
                                 
@@ -55,66 +55,6 @@
                                 </div> 
                                 </div>
                             </div> 
-
-                            <div class="comment-add mt-5">
-                                <form action="/post">
-                                    <div class="mb-2">
-                                        <label for="exampleFormControlInput1" class="form-label">Ваше имя, или псевдоним.</label>
-                                        <input type="username" class="form-control" id="add-username" name="username" placeholder="Александр Сергеевич Пушкин">
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlTextarea1" class="form-label">Ваш комментарий</label>
-                                        <textarea class="form-control" id="add-comment" name="text" rows="3"></textarea>
-                                      </div>
-                                    <div class="mb-3">
-                                        <button type="submit" class="btn btn-outline-primary">Оставить свой отзыв.</button>
-                                    </div>
-                                </form>    
-                            </div>
-                        
-
-                            <div class="post-comment p-3 mt-5">
-
-                                <p>Комментарии:</p>
-
-                                <section class="comment-show p-3 border mt-2"> 
-                                    <p class="author border-bottom"><b>Автор:</b> Анатолий Ляхов</p> 
-                                    <p class="comment "><b>Коментарий:</b> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi beatae nihil accusamus, mollitia impedit sed eligendi tempore veritatis delectus ad iste consequatur odio quia molestiae quae porro quos itaque voluptatum, minus sint unde. Voluptas maxime, minus eaque neque maiores consequuntur illo omnis eius. Tenetur laudantium in commodi labore odio tempora. Reiciendis voluptates dolore autem totam perspiciatis debitis nostrum. Sit dignissimos voluptas quidem laboriosam ducimus nostrum odit culpa dolorem ex, delectus vero non ea. Dignissimos voluptas ipsam incidunt et ipsum possimus sunt eum, molestiae nulla nemo, expedita tempore optio sint. Deleniti doloribus quae facere eaque eius magnam cum natus commodi minus?  </p>
-                                    <p class="data border-top "><b>Дата:</b> 16.05.2022</p>
-                                </section>
-
-                                <section class="comment-show p-3 border mt-2"> 
-                                    <p class="author border-bottom"><b>Автор:</b> Анатолий Ляхов</p> 
-                                    <p class="comment "><b>Коментарий:</b> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi beatae nihil accusamus, mollitia impedit sed eligendi tempore veritatis delectus ad iste consequatur odio quia molestiae quae porro quos itaque voluptatum, minus sint unde. Voluptas maxime, minus eaque neque maiores consequuntur illo omnis eius. Tenetur laudantium in commodi labore odio tempora. Reiciendis voluptates dolore autem totam perspiciatis debitis nostrum. Sit dignissimos voluptas quidem laboriosam ducimus nostrum odit culpa dolorem ex, delectus vero non ea. Dignissimos voluptas ipsam incidunt et ipsum possimus sunt eum, molestiae nulla nemo, expedita tempore optio sint. Deleniti doloribus quae facere eaque eius magnam cum natus commodi minus?  </p>
-                                    <p class="data border-top "><b>Дата:</b> 16.05.2022</p>
-                                </section>
-
-                                <section class="comment-show p-3 border mt-2"> 
-                                    <p class="author border-bottom"><b>Автор:</b> Анатолий Ляхов</p> 
-                                    <p class="comment "><b>Коментарий:</b> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi beatae nihil accusamus, mollitia impedit sed eligendi tempore veritatis delectus ad iste consequatur odio quia molestiae quae porro quos itaque voluptatum, minus sint unde. Voluptas maxime, minus eaque neque maiores consequuntur illo omnis eius. Tenetur laudantium in commodi labore odio tempora. Reiciendis voluptates dolore autem totam perspiciatis debitis nostrum. Sit dignissimos voluptas quidem laboriosam ducimus nostrum odit culpa dolorem ex, delectus vero non ea. Dignissimos voluptas ipsam incidunt et ipsum possimus sunt eum, molestiae nulla nemo, expedita tempore optio sint. Deleniti doloribus quae facere eaque eius magnam cum natus commodi minus?  </p>
-                                    <p class="data border-top "><b>Дата:</b> 16.05.2022</p>
-                                </section>
-
-                                <section class="comment-show p-3 border mt-2"> 
-                                    <p class="author border-bottom"><b>Автор:</b> Анатолий Ляхов</p> 
-                                    <p class="comment "><b>Коментарий:</b> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi beatae nihil accusamus, mollitia impedit sed eligendi tempore veritatis delectus ad iste consequatur odio quia molestiae quae porro quos itaque voluptatum, minus sint unde. Voluptas maxime, minus eaque neque maiores consequuntur illo omnis eius. Tenetur laudantium in commodi labore odio tempora. Reiciendis voluptates dolore autem totam perspiciatis debitis nostrum. Sit dignissimos voluptas quidem laboriosam ducimus nostrum odit culpa dolorem ex, delectus vero non ea. Dignissimos voluptas ipsam incidunt et ipsum possimus sunt eum, molestiae nulla nemo, expedita tempore optio sint. Deleniti doloribus quae facere eaque eius magnam cum natus commodi minus?  </p>
-                                    <p class="data border-top "><b>Дата:</b> 16.05.2022</p>
-                                </section>
-
-                                <section class="comment-show p-3 border mt-2"> 
-                                    <p class="author border-bottom"><b>Автор:</b> Анатолий Ляхов</p> 
-                                    <p class="comment "><b>Коментарий:</b> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi beatae nihil accusamus, mollitia impedit sed eligendi tempore veritatis delectus ad iste consequatur odio quia molestiae quae porro quos itaque voluptatum, minus sint unde. Voluptas maxime, minus eaque neque maiores consequuntur illo omnis eius. Tenetur laudantium in commodi labore odio tempora. Reiciendis voluptates dolore autem totam perspiciatis debitis nostrum. Sit dignissimos voluptas quidem laboriosam ducimus nostrum odit culpa dolorem ex, delectus vero non ea. Dignissimos voluptas ipsam incidunt et ipsum possimus sunt eum, molestiae nulla nemo, expedita tempore optio sint. Deleniti doloribus quae facere eaque eius magnam cum natus commodi minus?  </p>
-                                    <p class="data border-top "><b>Дата:</b> 16.05.2022</p>
-                                </section>
-
-                                <section class="comment-show p-3 border mt-2"> 
-                                    <p class="author border-bottom"><b>Автор:</b> Анатолий Ляхов</p> 
-                                    <p class="comment "><b>Коментарий:</b> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi beatae nihil accusamus, mollitia impedit sed eligendi tempore veritatis delectus ad iste consequatur odio quia molestiae quae porro quos itaque voluptatum, minus sint unde. Voluptas maxime, minus eaque neque maiores consequuntur illo omnis eius. Tenetur laudantium in commodi labore odio tempora. Reiciendis voluptates dolore autem totam perspiciatis debitis nostrum. Sit dignissimos voluptas quidem laboriosam ducimus nostrum odit culpa dolorem ex, delectus vero non ea. Dignissimos voluptas ipsam incidunt et ipsum possimus sunt eum, molestiae nulla nemo, expedita tempore optio sint. Deleniti doloribus quae facere eaque eius magnam cum natus commodi minus?  </p>
-                                    <p class="data border-top "><b>Дата:</b> 16.05.2022</p>
-                                </section>
-
-                            </div>
                                                 
                             <%- include('./partials/footer.ejs') %>
                             
