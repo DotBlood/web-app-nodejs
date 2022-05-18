@@ -6,6 +6,7 @@ const createPath = require('./core/lib/UIpath');
 const postRouts = require('./core/routs/post-rout');
 const staticRouts = require('./core/routs/static-rout')
 
+
 // setings uis
 const app = express();
 app.set('view engine', 'ejs')
@@ -34,6 +35,7 @@ app.listen(Port, Hostname, (error) => {
     error ? console.log(error) : console.log(`listening port: 127.0.0.1:${Port}`);
 });
 
+
 //include static css,js.etc
 app.use(express.static('public'))
 app.use('/css', express.static(__dirname + 'public/css'))
@@ -46,6 +48,7 @@ app.use(staticRouts);
 app.use(postRouts);
 
 
+//404 error
 app.use((req, res) => {
     const title = 'ERROR 404...';
     res
