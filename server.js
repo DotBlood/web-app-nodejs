@@ -5,15 +5,17 @@ const morgan = require('morgan');
 const { createPath } = require('./core/lib/UIpath');
 
 
+
 //import routs
 const postRouts = require('./core/routs/post-rout');
 const staticRouts = require('./core/routs/static-rout');
 const adminRouts = require('./core/routs/admin-rout');
+const userRouts = require('./core/routs/auth-rout');
 
 
 // setings uis
 const app = express();
-app.set('view engine', 'ejs')
+app.set('view engine', 'ejs');
 
 
 // config
@@ -32,13 +34,14 @@ mongoose
 // lib
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
 app.use(express.urlencoded({ extended: false }));
+const http = require('http').createServer(app);
+const io = require('socket.io')(http)
 
 
-// start server
-app.listen(Port, Hostname, (error) => {
+// Initialization server and socet-io
+http.listen(Port, Hostname, (error) =>{
     error ? console.log(error) : console.log(`listening port: 127.0.0.1:${Port}`);
 });
-
 
 //include static css,js.etc
 app.use(express.static('public'))
@@ -50,6 +53,7 @@ app.use('/js', express.static(__dirname + 'public/js'))
 app.use(staticRouts);
 app.use(postRouts);
 app.use(adminRouts);
+app.use(userRouts);
 
 
 //404 error

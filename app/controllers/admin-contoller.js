@@ -1,15 +1,6 @@
 const Post = require('../models/post');
-const {
-    createPathAdminPost,
-    createPath
-} = require('../../core/lib/UIpath');
-
-
-// handlers error
-const handlError = (res, error) => {
-    console.log(error);
-    res.render(createPath('errors'), { title: 'Error' });
-};
+const error = require('../../core/lib/handlError');
+const { createPathAdminPost, } = require('../../core/lib/UIpath');
 
 
 const getAddPost = (req, res) => {
@@ -24,7 +15,7 @@ const createPost = (req, res) => {
     post
         .save()
         .then((result) => res.redirect('/posts'))
-        .catch((error) => handlError(res, error));
+        .catch((error) => error(res, error));
 }
 
 

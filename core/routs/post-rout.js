@@ -16,7 +16,7 @@ const express = require('express');
 const {
   getPost,
   getPosts,
-} = require('../../app/controllers/post-controler');
+} = require('../../app/controllers/post-controller');
 
 
 //include render        
