@@ -1,0 +1,16 @@
+body {
+    height: 100%;
+    background-color: rgb(205, 205, 205);
+}
+
+.auth {
+    margin-top: 15%;
+}
+
+.auth-form {
+    padding: 5px;
+}
+
+.border-auth {
+    border-radius: 2rem;
+}
