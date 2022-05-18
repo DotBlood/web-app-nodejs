@@ -1,6 +1,10 @@
 //import
 const express = require('express');
-const { createPathAdmin } = require('../lib/UIpath');
+const { createPathAdmin, createPathAdminPost } = require('../lib/UIpath');
+const {
+    getAddPost,
+    createPost
+} = require('../../app/controllers/admin-contoller');
 
 
 //create router
@@ -22,6 +26,10 @@ router.get('/admin/auth', (req, res) => {
 router.get('/admin/index', (req, res) => {
     res.render(createPathAdmin('index'));
 });
+
+router.post('/admin/add-post', createPost);
+router.get('/admin/add-post', getAddPost);
+
 
 
 //export module

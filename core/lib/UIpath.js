@@ -5,10 +5,12 @@ const path = require('path');
 const createPath = (page) => path.resolve(__dirname, '../../views', `${page}.ejs`);
 const createPathAdmin = (page) => path.resolve(__dirname, '../../views/admin', `${page}.ejs`);
 const createPathUser = (page) => path.resolve(__dirname, '../../views/user', `${page}.ejs`);
+const createPathAdminPost = (page) => path.resolve(__dirname, '../../views/admin/posts', `${page}.ejs`);
 
 //export path
 module.exports = {
     createPath,
     createPathUser,
-    createPathAdmin
+    createPathAdmin,
+    createPathAdminPost
 };

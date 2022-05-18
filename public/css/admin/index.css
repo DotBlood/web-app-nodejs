@@ -1,9 +1,5 @@
 .body {
-    background-color: #8CC0DE;
-}
-
-.container {
-    background-color: #FAF0D7;
+    background-color: #fff;
 }
 
 /*stats*/
@@ -17,6 +13,7 @@
     border-radius: 2rem;
 }
 
+    
 /*main*/
 .main-block {
     justify-content: space-between;

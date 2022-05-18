@@ -16,8 +16,6 @@ const express = require('express');
 const {
   getPost,
   getPosts,
-  getAddPost,
-  createPost
 } = require('../../app/controllers/post-controler');
 
 
@@ -28,8 +26,6 @@ const router = express.Router();
 // router
 router.get('/posts', getPosts);
 router.get('/posts/:id', getPost);
-router.post('/add-post', createPost);
-router.get('/add-post', getAddPost);
 
 
 //export rouetr

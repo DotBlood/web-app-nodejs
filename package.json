@@ -15,6 +15,7 @@
         "ejs": "^3.1.8",
         "express": "^4.18.1",
         "mongoose": "^6.3.3",
-        "morgan": "^1.10.0"
+        "morgan": "^1.10.0",
+        "soket.io": "^0.0.1-security"
     }
 }

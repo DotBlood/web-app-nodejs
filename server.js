@@ -4,6 +4,7 @@ const express = require('express');
 const morgan = require('morgan');
 const { createPath } = require('./core/lib/UIpath');
 
+
 //import routs
 const postRouts = require('./core/routs/post-rout');
 const staticRouts = require('./core/routs/static-rout');
@@ -43,7 +44,6 @@ app.listen(Port, Hostname, (error) => {
 app.use(express.static('public'))
 app.use('/css', express.static(__dirname + 'public/css'))
 app.use('/js', express.static(__dirname + 'public/js'))
-app.use('/css/admin', express.static(__dirname + 'public/css'))
 
 
 // routs
