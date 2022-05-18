@@ -3,45 +3,46 @@ body {
     background-color: rgb(205, 205, 205);
 }
 
-.body{
+.body {
     background-color: #8CC0DE;
 }
 
-.container{
+.container {
     background-color: #FAF0D7;
 }
 
 /*auth*/
-.auth{
+.auth {
     margin-top: 15%;
 }
 
-.auth-form{
+.auth-form {
     padding: 5px;
 }
-.border-auth{
+
+.border-auth {
     border-radius: 2rem;
 }
 
 
 /*stats*/
-.icon{
+.icon {
     text-align: center;
     font-size: 40px;
 }
 
-.panel{
+.panel {
     font-weight: 500;
     border-radius: 2rem;
 }
 
 /*main*/
-.main-block{
+.main-block {
     justify-content: space-between;
     align-items: center;
 
 }
 
 
-/*chat*/
 
+/*chat*/

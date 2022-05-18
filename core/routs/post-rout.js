@@ -20,8 +20,10 @@ const {
   createPost
 } = require('../../app/controllers/post-controler');
 
+
 //include render        
 const router = express.Router();
+
 
 // router
 router.get('/posts', getPosts);
