@@ -1,6 +1,6 @@
 // imports
 const Post = require('../models/post');
-const createPath = require('../../core/lib/UIpath');
+const {createPath} = require('../../core/lib/UIpath');
 
 // handlers error
 const handlError = (res, error) => {

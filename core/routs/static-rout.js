@@ -1,6 +1,6 @@
 //import
 const express = require('express');
-const createPath = require('../lib/UIpath');
+const {createPath} = require('../lib/UIpath');
 
 
 //create router
@@ -8,7 +8,7 @@ const router = express.Router();
 
 
 //routs
-router.get('/', (req, res) => {
+router.get(['/', '/index', '/index.html', '/home', '/main'], (req, res) => {
     const title = 'Дабро пожалывать!';
     res.render(createPath('index'), { title });
 });
@@ -20,7 +20,7 @@ router.get('/services', (req, res) => {
 });
 
 
-router.get('/questions', (req, res) => {
+router.get(['/questions', '/qui'], (req, res) => {
     const title = 'Задайте нам свой вопрос';
     res.render(createPath('questions'), { title });
 });
