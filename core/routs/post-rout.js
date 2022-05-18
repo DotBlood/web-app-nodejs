@@ -13,12 +13,12 @@
 
 // import
 const express = require('express');
-const { 
-    getPost,
-    getPosts,
-    getAddPost,
-    createPost     
-  } = require('../../app/controllers/post-controler');
+const {
+  getPost,
+  getPosts,
+  getAddPost,
+  createPost
+} = require('../../app/controllers/post-controler');
 
 //include render        
 const router = express.Router();

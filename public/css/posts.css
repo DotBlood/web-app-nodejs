@@ -1,4 +1,5 @@
 @import url('media.css');
+
 body {
     background-color: #fff;
 }
@@ -41,15 +42,15 @@ body {
     font-weight: 400;
 }
 
-.link-to-topick{
+.link-to-topick {
     text-decoration: none;
-    color:green
+    color: green
 }
 
 /*btn*/
-.btns-to-topick{
-text-align: end;
-margin-top: 150px;
+.btns-to-topick {
+    text-align: end;
+    margin-top: 150px;
 }
 
 /*chapter*/

@@ -1,0 +1,47 @@
+body {
+    height: 100%;
+    background-color: rgb(205, 205, 205);
+}
+
+.body{
+    background-color: #8CC0DE;
+}
+
+.container{
+    background-color: #FAF0D7;
+}
+
+/*auth*/
+.auth{
+    margin-top: 15%;
+}
+
+.auth-form{
+    padding: 5px;
+}
+.border-auth{
+    border-radius: 2rem;
+}
+
+
+/*stats*/
+.icon{
+    text-align: center;
+    font-size: 40px;
+}
+
+.panel{
+    font-weight: 500;
+    border-radius: 2rem;
+}
+
+/*main*/
+.main-block{
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+
+/*chat*/
+

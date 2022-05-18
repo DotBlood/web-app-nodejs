@@ -57,12 +57,15 @@ body {
     25% {
         -webkit-transform: translateX(22px) rotate(-90deg) scale(0.5)
     }
+
     50% {
         -webkit-transform: translateX(22px) translateY(22px) rotate(-180deg)
     }
+
     75% {
         -webkit-transform: translateX(0px) translateY(22px) rotate(-270deg) scale(0.5)
     }
+
     100% {
         -webkit-transform: rotate(-360deg)
     }
@@ -72,15 +75,19 @@ body {
     25% {
         transform: translateX(42px) rotate(-90deg) scale(0.5);
     }
+
     50% {
         transform: translateX(42px) translateY(42px) rotate(-179deg);
     }
+
     50.1% {
         transform: translateX(42px) translateY(42px) rotate(-180deg);
     }
+
     75% {
         transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
     }
+
     100% {
         transform: rotate(-360deg);
     }

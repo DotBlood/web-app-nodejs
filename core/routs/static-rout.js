@@ -6,12 +6,12 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     const title = 'Дабро пожалывать!';
-    res.render(createPath('index'), {title});
+    res.render(createPath('index'), { title });
 });
 
 router.get('/services', (req, res) => {
     const title = 'Наши услуги';
-    res.render(createPath('services'), {title});
+    res.render(createPath('services'), { title });
 });
 
 router.get('/questions', (req, res) => {

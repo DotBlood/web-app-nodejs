@@ -16,15 +16,16 @@ body {
 
 /*Пост*/
 
-.post-img{
+.post-img {
     border-radius: 3rem;
 }
 
-.post-title{
+.post-title {
     text-align: center;
 }
 
-.post-description, .post-author{
+.post-description,
+.post-author {
     font-weight: 400;
     padding: 0;
     margin: 0;
@@ -44,12 +45,12 @@ body {
 
 /*комментарий*/
 
-.comment-show{
+.comment-show {
     width: auto;
-    border-radius: 2rem ;
+    border-radius: 2rem;
 }
 
-.comment-show>p{
+.comment-show>p {
     font-weight: 300;
 }
 
