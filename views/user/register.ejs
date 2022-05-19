@@ -8,23 +8,58 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <title>web.ru | Регистрация</title>
+    <link rel="stylesheet" href="/css/style-user.css">
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
 </head>
 
 <body>
 
+    <%- include('../partials/nav/navbar-index.ejs') %>
+
+        <div class="container-fluid d-flex h-100 justify-content-center align-items-center p-0">
+            <div class="row auth">
+                <div class="border-auth bg-white col border border-2 shadow-sm p-5">
+                    <h3 class="text-center mb-4">Регистрация</h3>
+                    
+                    <form class="auth-form" method="post" action="/user/register">
+                        <div class="form-group mt-2">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" name="email" aria-describedby="email"
+                                placeholder="exemple@email.com">
+                        </div>
+
+                        <div class="form-group mt-2">
+                            <label for="username">Username:</label>
+                            <input type="username" class="form-control" id="username" name="username"
+                                aria-describedby="username" placeholder="Вася пупкин">
+                        </div>
+
+                        <div class="form-group mt-2">
+                            <label for="Password">Пароль:</label>
+                            <input type="password" class="form-control" id="Password1" name="password">
+                        </div>
+                        <div class="form-group mt-2">
+                            <label for="Password">Повторите пароль:</label>
+                            <input type="password" class="form-control" id="Password2" name="password2">
+                        </div>
+                        <div class="form-group form-check mt-2">
+                            <input type="checkbox" class="form-check-input" id="saveme" name="saveme">
+                            <label class="form-check-label" for="saveme">я, прочел(а) и соглошаюсь, с <a href="">политикой</a> <br> конфедициальности сайта.</label>
+                        </div>
+                        <div class="form-group d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary w-45 mt-2">Создать</button>
+                            <a type="btn" id="btn-cansel" class="btn btn-danger w-45 mt-2" >Отмена</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
 
-
-
-
-
-
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-        crossorigin="anonymous"></script>
+        <script src="/js/auth-alert.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+            crossorigin="anonymous"></script>
 </body>
 
 </html>

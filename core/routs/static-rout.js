@@ -9,7 +9,7 @@ const router = express.Router();
 
 //routs
 router.get(['/', '/index', '/index.html', '/home', '/main'], (req, res) => {
-    const title = 'Дабро пожалывать!';
+    const title = 'Дабро пожаловать!';
     res.render(createPath('index'), { title });
 });
 

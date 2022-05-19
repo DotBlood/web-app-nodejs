@@ -10,7 +10,7 @@ const { createPath } = require('./core/lib/UIpath');
 const postRouts = require('./core/routs/post-rout');
 const staticRouts = require('./core/routs/static-rout');
 const adminRouts = require('./core/routs/admin-rout');
-const userRouts = require('./core/routs/auth-rout');
+const userRouts = require('./core/routs/user-rout');
 
 
 // setings uis
@@ -42,6 +42,7 @@ const io = require('socket.io')(http)
 http.listen(Port, Hostname, (error) =>{
     error ? console.log(error) : console.log(`listening port: 127.0.0.1:${Port}`);
 });
+
 
 //include static css,js.etc
 app.use(express.static('public'))
