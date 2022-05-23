@@ -2,7 +2,6 @@
 const mongoose = require('mongoose'),
     express = require('express'),
     morgan = require('morgan'),
-    passport = require('passport'),
     { createPath } = require('./core/lib/UIpath')
 
 
@@ -42,10 +41,6 @@ app.use(express.urlencoded({ extended: false }))
 const http = require('http').createServer(app)
 app.use(express.json())
 const io = require('socket.io')(http)
-
-
-app.use(passport.initialize())
-require('./app/middleware/passport')(passport)
 
 
 
