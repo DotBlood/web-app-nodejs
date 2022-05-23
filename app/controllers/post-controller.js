@@ -1,7 +1,7 @@
 // imports
 const Post = require('../models/post');
 const {createPath} = require('../../core/lib/UIpath');
-const error = require('../../core/lib/handlError');
+const errors = require('../../core/lib/handlError');
 
 
 //controllers
@@ -19,7 +19,7 @@ const getPosts = (req, res) => {
         .find()
         .sort({ createdAt: -1 })
         .then((posts) => res.render(createPath('posts'), { posts, title }))
-        .catch((error) => error(res, error));
+        .catch((error) => errors(res, error));
 };
 
 

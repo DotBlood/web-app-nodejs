@@ -1,8 +1,6 @@
 const express = require('express');
 const { createPathUser } = require('../lib/UIpath');
-const {
-    Register,
-} = require('../../app/controllers/auth-controller');
+const {Register, Login} = require('../../app/controllers/auth-controller')
 
 //create router
 const router = express.Router();
@@ -18,18 +16,11 @@ router.get(['/user', '/users', '/u'], (req, res) => {
 router.get('/user/login', (req, res) => {
     res.render(createPathUser('login'));
 });
-
-
-
-
-
 router.get('/user/register', (req, res) => {
     res.render(createPathUser('register'))
 
     
 });
-
-router.post('/user/register', Register);
 
 
 
@@ -39,31 +30,14 @@ router.get('/user/help', (req, res) => {
 });
 
 
-
-
-
-// settings
-router.get('/user/setings', (req, res) => {
-    res.render(createPathUser('setings'))
-});
-
-
-
-
 //page
 router.get('/user/page/:username', (req, res) => {
     res.render(createPathUser('page'))
 });
 
 
-//router.post('/user/register', Register);
-//router.post('user/login', Login)
-//router.get('/user/page/:id', getUsers);
-
-
-
-
-
+router.post('/user/register', Register);
+router.post('/user/login', Login)
 
 
 

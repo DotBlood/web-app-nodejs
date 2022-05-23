@@ -1,10 +1,7 @@
 //import
-const express = require('express');
-const {createPath} = require('../lib/UIpath');
-
-
-//create router
-const router = express.Router();
+const express = require('express'),
+    { createPath } = require('../lib/UIpath'),
+    router = express.Router()
 
 
 //routs

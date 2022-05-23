@@ -1,8 +1,6 @@
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken')
-const { createPathAdmin } = require('../../core/lib/UIpath');
-const User = require('../models/user');
-const config = require('../../core/config');
+const bcrypt = require('bcryptjs'),
+    User = require('../models/user')
+    
 
 
 async function Register(req, res) {
@@ -29,60 +27,77 @@ async function Register(req, res) {
             res.status(409).send('~email');
         } else {
 
-            const salt = bcrypt.genSaltSync(10);
+            const salt = await bcrypt.genSaltSync(10);
 
             const user = new User({
                 email: email,
                 username: username,
-                password: bcrypt.hashSync(password, salt)
+                password: await bcrypt.hashSync(password, salt)
             })
 
             try {
                 await user.save()
-                res.status(201).redirect('/')
+                res.redirect('/user/login')
             } catch (e) {
                 console.log(e);
             }
+            try { await createsessions } catch (e) { console.log(e) }
+            res.status(201).redirect('/user')
         }
     }
+}
+
+const generateAccessToken = (id, username, role) => {
+    const payload = {
+        id,
+        username,
+        role,
+    }
+    return jwt.sign(payload, 'test', { expiresIn: '15m' })
 }
 
 
 async function Login(req, res) {
-    const condidate = await User.findOne({ email: req.body.email })
 
-    if (condidate) {
-        const passwordResult = bcrypt.compareSync(req.body.password, condidate.password)
-        if (passwordResult) {
-
-            const token = jwt.sign({
-                role: condidate.role,
-                username: condidate.username,
-                userId: condidate._id,
-
-            }, config.jwt, { expiresIn: 60 * 60 });
-
-            res.status(200).json({
-                token: `Bearer ${token}`
-            })
-        } else {
-            res.status(401).json({ message: 'Не верный пароль' })
-        }
-    } else {
-        res.status(404).json({ message: 'пользывателя с такии email не существует' })
+    if (!req.body.username || !req.body.password) {
+        return res
+            .status(400)
+            .json({ message: 'Username, email and password must be provided' })
     }
 
+    const user = await User.findOne({ username: req.body.username })
+
+    if (user) {
+        const passwordResult = bcrypt.compareSync(req.body.password, user.password);
+
+        if (passwordResult) {
+
+            const token = generateAccessToken(user._id, user.username, user.role)
+
+            localStorage.setItem('token', token);
+
+
+            var cookieExtractor = function (req) {
+                var token = null;
+                if (req && req.cookies) {
+                    token = req.cookies['jwt'];
+                }
+                return token;
+            };
+            opts.jwtFromRequest = cookieExtractor;
 
 
 
+        } else {
+            res.status(401).json({ message: 'Не верный пароль' })
+
+        }
+    } else {
+
+        res.status(404).json({ message: 'пользывателя с такии username не существует' })
+    }
 }
 
-const getUsers = (req, res) => {
-    //
-}
 
-module.exports = {
-    Register,
-    Login,
-    getUsers
-};
+
+module.exports = { Register, Login }
