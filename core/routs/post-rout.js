@@ -12,11 +12,12 @@
 */
 
 // import
-const express = require('express');
-const {
-  getPost,
-  getPosts,
-} = require('../../app/controllers/post-controller');
+const express = require('express'),
+  {
+    getPost,
+    getPosts,
+  } = require('../../app/controllers/post-controller')
+//  authMe = require('../../app/middleware/authMe')
 
 
 //include render        

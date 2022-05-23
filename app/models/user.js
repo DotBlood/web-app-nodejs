@@ -20,7 +20,7 @@ const userSchema = new Schema(
       required: true,
       select: true
     },
-    role: {
+    roles: {
       type: String,
       enum: ['USER', 'ADMIN'],
       default: 'USER',

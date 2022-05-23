@@ -1,7 +1,12 @@
 const bcrypt = require('bcryptjs'),
     User = require('../models/user')
-    
+const jwt = require('jsonwebtoken')
 
+/*
+ * Регистрция пользывателя
+ * происходит это просто, мы получаем данные из форм с сайта и проверяем их на волидносит.
+ * Если данные пршли все проверки, то мы создаем новую аргумент в базе данных
+ */
 
 async function Register(req, res) {
     const username = req.body.username
@@ -41,22 +46,36 @@ async function Register(req, res) {
             } catch (e) {
                 console.log(e);
             }
-            try { await createsessions } catch (e) { console.log(e) }
-            res.status(201).redirect('/user')
         }
     }
 }
 
-const generateAccessToken = (id, username, role) => {
+/*
+ * Генератор токина, 
+ * сюда мы передаем данные которые будет хронить токен, так же секретный код, 
+ * через который эти дланные сможет читать сервер, вообще лучше хронить данный ключ в отдельно файле, что бы первое нигде не ошибиться, 
+ * а так же чтобы в случае чего взлоумышлиники не смогли изиминить свои данные
+ */
+
+const generateAccessToken = (UserId, Username, roles) => {
     const payload = {
-        id,
+        UserId,
         username,
-        role,
+        roles,
     }
-    return jwt.sign(payload, 'test', { expiresIn: '15m' })
+    return jwt.sign(payload, 'test', { expiresIn: '1d' })
 }
 
-
+/*
+ * Авторизация пользывателя
+ * Для авторизации я выбрал jwt формат, (JSON Web Token (JWT) — это JSON объект, который определен в открытом стандарте RFC 7519. 
+ * Он считается одним из безопасных способов передачи информации между двумя участниками. Для его создания необходимо определить заголовок (header)
+ * с общей информацией по токену, полезные данные (payload), такие как id пользователя, его роль и т.д. и подписи (signature).
+ * Кстати, правильно JWT произносится как /джет/)
+ * Даные с формы так же проходят волидацию после чего все данные проверяются в базе данных, если данные совпали и человек был найден в moongodb
+ * Создаеться jwt токен, который передается в cookie под названием token
+ * одна такая сессия длиться 1 день, через день человеку придеться заного авторизироваться на сайте
+ */
 async function Login(req, res) {
 
     if (!req.body.username || !req.body.password) {
@@ -72,21 +91,11 @@ async function Login(req, res) {
 
         if (passwordResult) {
 
-            const token = generateAccessToken(user._id, user.username, user.role)
+            const token = generateAccessToken(user._id, user.username, user.roles)
 
-            localStorage.setItem('token', token);
+            res.set("Set-Cookie", `Token=Barer ${token}; Path=/; HttpOnly`)
 
-
-            var cookieExtractor = function (req) {
-                var token = null;
-                if (req && req.cookies) {
-                    token = req.cookies['jwt'];
-                }
-                return token;
-            };
-            opts.jwtFromRequest = cookieExtractor;
-
-
+            res.redirect('/user/login')
 
         } else {
             res.status(401).json({ message: 'Не верный пароль' })
@@ -97,7 +106,6 @@ async function Login(req, res) {
         res.status(404).json({ message: 'пользывателя с такии username не существует' })
     }
 }
-
 
 
 module.exports = { Register, Login }

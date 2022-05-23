@@ -18,12 +18,12 @@ router.get(['/admin', '/admins'], (req, res) => {
 
 
 
-router.get('/admin/auth',  (req, res) => {
+router.get('/admin/auth', (req, res) => {
     res.render(createPathAdmin('auth'));
 });
 
 
-router.get('/admin/index',  (req, res) => {
+router.get('/admin/index', (req, res) => {
     res.render(createPathAdmin('index'));
 });
 

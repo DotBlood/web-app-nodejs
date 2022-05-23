@@ -2,6 +2,7 @@
 const mongoose = require('mongoose'),
     express = require('express'),
     morgan = require('morgan'),
+    cookieParser = require('cookie-parser'),
     { createPath } = require('./core/lib/UIpath')
 
 
@@ -22,7 +23,6 @@ const postRouts = require('./core/routs/post-rout'),
     userRouts = require('./core/routs/user-rout')
 
 
-
 // db
 const db = 'mongodb://root-admin:no8sU6caURKi@localhost:27017/?authMechanism=DEFAULT&authSource=medweb-node'
 mongoose
@@ -30,12 +30,10 @@ mongoose
     .then((res) => console.log('Connect to MongoDB'))
     .catch((error) => console.log(error))
 
-
-
 // lib
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'))
 app.use(express.urlencoded({ extended: false }))
-
+app.use(cookieParser())
 
 // socket io
 const http = require('http').createServer(app)
