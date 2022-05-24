@@ -1,36 +1,50 @@
 //import
-const express = require('express');
-const { createPathAdmin, createPathAdminPost } = require('../lib/UIpath');
-const {
-    getAddPost,
-    createPost
-} = require('../../app/controllers/admin-contoller');
+const express = require('express'),
+    { createPathAdmin, createPathAdminPost } = require('../lib/UIpath'),
+    { getAddPost, createPost, editPost, delPost } = require('../../app/controllers/admin-contoller'),
+    perms = require('../../app/middleware/permisson');
+const { render } = require('express/lib/response');
 
 
 //create router
 const router = express.Router();
 
+//prems
+const Admin = 'ADMIN'
 
-//routs
+//redirect
 router.get(['/admin', '/admins'], (req, res) => {
-    res.redirect('/admin/auth');
+    res.redirect('/admin/index');
+});
+
+//#####################################################
+//#
+//#                Get запросы 
+//# 
+//#######################################################
+
+//Index
+router.get('/admin/index', perms(Admin), (req, res) => {
+    res.render(createPathAdmin('index'))
+});
+//Add Post
+router.get('/admin/add-post', perms(Admin), getAddPost);
+//Edit post
+router.get('/admin/edit-post', perms(Admin), (req, res) => {
+    res.render(createPathAdminPost('edit-post'));
+});
+//Remove post
+router.get('/admin/del-post', perms(Admin), (req, res) => {
+    res.render(createPathAdminPost('del-post'));
 });
 
 
+//Add Post
+router.post('/admin/add-post', perms(Admin), createPost)
+//Edit post
+router.post('/admin/edit-post', perms(Admin), editPost)
 
-router.get('/admin/auth', (req, res) => {
-    res.render(createPathAdmin('auth'));
-});
-
-
-router.get('/admin/index', (req, res) => {
-    res.render(createPathAdmin('index'));
-});
-
-router.post('/admin/add-post', createPost);
-router.get('/admin/add-post', getAddPost);
-
-
+router.post('/admin/del-post', perms(Admin), delPost)
 
 //export module
 module.exports = router;

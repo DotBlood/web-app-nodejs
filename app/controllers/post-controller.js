@@ -1,21 +1,21 @@
 // imports
 const Post = require('../models/post');
-const {createPath} = require('../../core/lib/UIpath');
+const { createPath } = require('../../core/lib/UIpath');
 const errors = require('../../core/lib/handlError');
 
 
 //controllers
-const getPost = (req, res) => {
-    Post
+async function getPost(req, res) {
+    await Post
         .findById(req.params.id)
         .then((post) => res.render(createPath('post'), { post }))
-        .catch((error) => error(res, error));
+        .catch((error) => errors(res, error));
 };
 
 
-const getPosts = (req, res) => {
+async function getPosts(req, res) {
     const title = 'Новости';
-    Post
+    await Post
         .find()
         .sort({ createdAt: -1 })
         .then((posts) => res.render(createPath('posts'), { posts, title }))

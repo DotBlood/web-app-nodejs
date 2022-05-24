@@ -11,25 +11,31 @@ const jwt = require('jsonwebtoken')
 async function Register(req, res) {
     const username = req.body.username
     const email = req.body.email
-    const password = req.body.password
+    const password = req.body.password1
+    const password2 = req.body.password2
 
 
-    if (!username || !email || !password) {
-        return res
-            .status(400)
-            .json({ message: 'Username, email and password must be provided' })
+    if (!username || !email || !password || !password2) {
+        res.cookie('error', 'Вы заполнили не все поля!', { expires: new Date(Date.now() + 1000), httpOnly: false })
+        return res.status(400).redirect('/user/register')
+    }
+    if (password !== password2) {
+        res.cookie('error', 'Пароли не совпали!', { expires: new Date(Date.now() + 1000), httpOnly: false })
+        return res.status(400).redirect('/user/register')
     }
 
-    const canditate = await User.findOne({ username: req.body.username })
+    const canditate = await User.findOne({ username: req.body.username });
 
     if (canditate) {
-        res.status(409).send('~login');
+        res.cookie('error', 'Данный username, уже используется!', { expires: new Date(Date.now() + 1000), httpOnly: false })
+        return res.status(409).redirect('/user/register');
     } else {
 
         const canditate = await User.findOne({ email: req.body.email })
 
         if (canditate) {
-            res.status(409).send('~email');
+            res.cookie('error', 'Данный email, уже используется!', { expires: new Date(Date.now() + 1000), httpOnly: false })
+            res.status(409).redirect('/user/register');
         } else {
 
             const salt = await bcrypt.genSaltSync(10);
@@ -42,6 +48,7 @@ async function Register(req, res) {
 
             try {
                 await user.save()
+                res.cookie('success', 'Вы успешно вы успешно создали аккаунт!', { expires: new Date(Date.now() + 1000), httpOnly: false })
                 res.redirect('/user/login')
             } catch (e) {
                 console.log(e);
@@ -57,11 +64,11 @@ async function Register(req, res) {
  * а так же чтобы в случае чего взлоумышлиники не смогли изиминить свои данные
  */
 
-const generateAccessToken = (UserId, Username, roles) => {
+const generateAccessToken = (UserId, Username, Roles) => {
     const payload = {
         UserId,
-        username,
-        roles,
+        Username,
+        Roles,
     }
     return jwt.sign(payload, 'test', { expiresIn: '1d' })
 }
@@ -79,9 +86,8 @@ const generateAccessToken = (UserId, Username, roles) => {
 async function Login(req, res) {
 
     if (!req.body.username || !req.body.password) {
-        return res
-            .status(400)
-            .json({ message: 'Username, email and password must be provided' })
+        res.cookie('error', 'Вы заполнили не все поля!', { expires: new Date(Date.now() + 1000), httpOnly: false })
+        return res.status(400).redirect('/user/login')
     }
 
     const user = await User.findOne({ username: req.body.username })
@@ -93,17 +99,18 @@ async function Login(req, res) {
 
             const token = generateAccessToken(user._id, user.username, user.roles)
 
-            res.set("Set-Cookie", `Token=Barer ${token}; Path=/; HttpOnly`)
-
-            res.redirect('/user/login')
+            res.set("Set-Cookie", `Token=${token}; Path=/; HttpOnly;`)
+            res.cookie('success', 'Вы успешно авторизовались!', { expires: new Date(Date.now() + 1000), httpOnly: false })
+            res.redirect('/')
 
         } else {
-            res.status(401).json({ message: 'Не верный пароль' })
+            res.cookie('error', 'Пароли не совпали!', { expires: new Date(Date.now() + 1000), httpOnly: false })
+            return res.status(401).redirect('/user/login')
 
         }
     } else {
-
-        res.status(404).json({ message: 'пользывателя с такии username не существует' })
+        res.cookie('error', 'Пользывателя с такии username не существует!', { expires: new Date(Date.now() + 1000), httpOnly: false })
+        return res.status(404).redirect('/user/login')
     }
 }
 

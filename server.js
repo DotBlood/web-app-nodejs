@@ -1,14 +1,21 @@
 // Import
+const req = require('express/lib/request')
 const mongoose = require('mongoose'),
     express = require('express'),
+    session = require('express-session'),
     morgan = require('morgan'),
+    Msg = require('./app/models/message')
+const { Socket } = require('socket.io')
+flash = require('express-flash'),
     cookieParser = require('cookie-parser'),
     { createPath } = require('./core/lib/UIpath')
+
 
 
 // setings ui
 const app = express()
 app.set('view engine', 'ejs')
+
 
 
 // config
@@ -20,7 +27,9 @@ const Port = 3000
 const postRouts = require('./core/routs/post-rout'),
     staticRouts = require('./core/routs/static-rout'),
     adminRouts = require('./core/routs/admin-rout'),
-    userRouts = require('./core/routs/user-rout')
+    userRouts = require('./core/routs/user-rout'),
+    apiRouts = require('./app/api/Users-setings.js')
+//apiMail = require('./app/api/apiMail')
 
 
 // db
@@ -33,13 +42,40 @@ mongoose
 // lib
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'))
 app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
+app.use(session({
+    secret: 'test',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: true }
+}))
 app.use(cookieParser())
+app.use(flash())
+
 
 // socket io
 const http = require('http').createServer(app)
-app.use(express.json())
 const io = require('socket.io')(http)
 
+
+
+io.on('connection', (socket) => {
+    console.log('User connection');
+    socket.emit('message');
+    socket.on('disconect', () => {
+        console.log('Usesr Disconect');
+    })
+    socket.on('chatmessage', (data) => {
+
+        const message = new Msg(data)
+        message.save().then(() => {
+            io.emit('chatmessage', { msg: data.msg })
+        })
+
+    })
+
+
+});
 
 
 
@@ -63,6 +99,8 @@ app.use(staticRouts);
 app.use(postRouts);
 app.use(adminRouts);
 app.use(userRouts);
+app.use(apiRouts);
+//sapp.use(apiMail);
 
 
 //404 error

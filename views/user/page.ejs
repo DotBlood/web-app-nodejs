@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мед сайт.</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="/css/banner.css">
+</head>
+
+<body class="">
+
+    <%- include('../partials/nav/navbar.ejs') %>
+
+        <%- include('../partials/banner.ejs') %>
+            <section class="main-window">
+                <div class="container">
+
+
+                    <div class="setings">
+                        <section>
+                            <div class="info mt-2 text-center">
+                                <p>Изменить Username <br> Ваш Username:s</p>
+                            </div>
+                            <form action="/api/editUsername" method="post">
+                                <div class="row g-3">
+                                    <div class="col">
+                                        <input type="text" class="form-control" placeholder="Username"
+                                            aria-label="Username" name="username" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-outline-primary">Изменить</button>
+                                </div>
+                            </form>
+                        </section>
+
+                        <section class="mb-5">
+                            <div class="info mt-5 text-center">
+                                <p>Изменение пароля</p>
+                            </div>
+                            <form action="/api/editPassword" method="post">
+                                <div class="row g-3 mt-5">
+                                    <div class="col">
+                                        <input type="text" class="form-control" placeholder="Старый пароль"
+                                            aria-label="Пароль" name="passwordOld" required>
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" class="form-control" placeholder="Новый пароль"
+                                            aria-label="Пароль" name="passwordNew" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-outline-primary">Изменить</button>
+                                </div>
+                            </form>
+                        </section>
+
+                        <section class="mb-5 container text-center">
+                            <div class="del-acc row-cols-12">
+                                <div class="info mt-5 text-center">
+                                    <p>Удаление аккаунта! <br>Если вы удалите аккаунт, то больше не сможете пользываться
+                                        функциями сайта!</p>
+                                </div>
+                                <form action="/api/dellAccaunt" method="post">
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="del-Username"
+                                            placeholder="Введите свой username" required>
+                                    </div>
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-danger w-20 mt-5 ">Подтверждаю</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </section>
+
+
+                    </div>
+                </div>
+
+            </section>
+
+
+
+
+
+            <%- include('../partials/footer.ejs') %>
+
+                <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+                <script src="/path/to/jquery.cookie.js"></script>
+
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+                    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+                    crossorigin="anonymous"></script>
+
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.16/dist/sweetalert2.all.min.js"></script>
+                <script src="/js/alert-errors.js"></script>
+                <script src="/js/alert-success.js"></script>
+
+</body>
+
+</html>

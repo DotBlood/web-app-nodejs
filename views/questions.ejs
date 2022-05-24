@@ -14,7 +14,7 @@
 
 <body>
 
-    <%- include('./partials/nav/navbar-que.ejs') %>
+    <%- include('./partials/nav/navbar.ejs') %>
 
         <div class="bg">
             <div class="container">
@@ -22,25 +22,25 @@
 
                     <%- include('./partials/banner.ejs') %>
 
+                    
                         <section class="forma-qui pb-5 mt-3">
                             <div class="row">
-
                                 <div class="col">
-                                    <form action="">
+                                    <form action="/api/que" method="post">
                                         <div class="form-floating mb-3">
-                                            <input type="email" class="form-control" id="email"
+                                            <input type="email" class="form-control" id="email" name="sendto"
                                                 placeholder="name@example.com">
                                             <label for="email">Email адрес</label>
                                         </div>
 
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" type="text" id="username"
+                                            <input class="form-control" type="text" id="username" name="username"
                                                 placeholder="Александр Сергеевич Пушкин">
                                             <label for="username">Ф.И.О.</label>
                                         </div>
 
                                         <div class="form-floating">
-                                            <textarea class="form-control" placeholder="Leave a comment here"
+                                            <textarea class="form-control" placeholder="Leave a comment here" name="description"
                                                 id="comment" style="height: 100px" maxlength="1500"></textarea>
                                             <label for="comment">Комментарий</label>
                                         </div>

@@ -7,10 +7,11 @@ module.exports = function (req, res, next) {
         if (!token) {
             next()
         } else {
+            res.cookie('success', 'Вы уже авторизованы!', { expires: new Date(Date.now() + 1000), httpOnly: false })
             return res.redirect('/')
         }
     } catch (e) {
         console.log(e)
-        return res.status(403).json({ message: 'вы не авторизованы' })
+        return res.status(403).redirect('/user/login')
     }
 };

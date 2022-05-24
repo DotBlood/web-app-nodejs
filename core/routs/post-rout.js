@@ -10,14 +10,13 @@
 * но для меньшей путаници было принято решение создать отдельный модуль UIpath.js в разделе core>lib
 * Для того чтобы отрисовка ui-элементы в веб приложении, так же названия ммодулля
 */
-
 // import
 const express = require('express'),
   {
     getPost,
     getPosts,
   } = require('../../app/controllers/post-controller')
-//  authMe = require('../../app/middleware/authMe')
+  authMe = require('../../app/middleware/authMe')
 
 
 //include render        
@@ -25,8 +24,8 @@ const router = express.Router();
 
 
 // router
-router.get('/posts', getPosts);
-router.get('/posts/:id', getPost);
+router.get('/posts', authMe, getPosts);
+router.get('/posts/:id', authMe, getPost);
 
 
 //export rouetr
