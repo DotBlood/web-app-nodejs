@@ -4,11 +4,18 @@ const socet = io(),
     input = document.querySelector('.input')
 
 
+
+
+
 form.addEventListener('submit', (e) => {
     e.preventDefault()
 
+    const value = input.value.trim()
 
-    if (input.value) {
+    if (!value) {
+        console.log('error')
+    } else {
+
         socet.emit('chatmessage', { msg: input.value })
     }
     input.value = ''

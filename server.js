@@ -20,7 +20,7 @@ app.set('view engine', 'ejs')
 
 // config
 const Hostname = '127.0.0.1'
-const Port = 3000
+const Port = 80
 
 
 //import routs

@@ -1,8 +1,7 @@
-const res = require('express/lib/response');
-const Post = require('../models/post'),
+const res = require('express/lib/response'),
+    Post = require('../models/post'),
     error = require('../../core/lib/handlError'),
     { createPathAdminPost, } = require('../../core/lib/UIpath')
-
 
 
 function getAddPost(req, res) {
@@ -31,7 +30,7 @@ async function editPost(req, res) {
 }
 
 async function delPost(req, res) {
-    const {_id} = req.body;
+    const { _id } = req.body;
     try {
         const delite = await Post.findByIdAndDelete({ _id }, { new: true })
     } catch (e) {

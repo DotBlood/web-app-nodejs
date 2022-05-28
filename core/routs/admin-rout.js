@@ -2,8 +2,10 @@
 const express = require('express'),
     { createPathAdmin, createPathAdminPost } = require('../lib/UIpath'),
     { getAddPost, createPost, editPost, delPost } = require('../../app/controllers/admin-contoller'),
-    perms = require('../../app/middleware/permisson');
-const { render } = require('express/lib/response');
+    perms = require('../../app/middleware/permisson'),
+    { render } = require('express/lib/response'),
+    db = require('mongoose');
+const Post = require('../../app/models/post');
 
 
 //create router
